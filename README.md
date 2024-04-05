@@ -43,6 +43,11 @@ Use identity provider  and add user to login to the console. I used htpasswd ide
 
 ![Screenshot 2024-04-04 at 12 53 41 PM](https://github.com/BidGithub2022/Red-Hat-OpenShift-Dedicated-on-Google-Cloud/assets/113651761/769dc986-39e3-41db-84cf-0931fb9f0a77)
 
+Instances on gcloud:
+
+![Screenshot 2024-04-04 at 7 55 00 PM](https://github.com/BidGithub2022/Red-Hat-OpenShift-Dedicated-on-Google-Cloud/assets/113651761/c9d82e39-4b83-4760-a6c4-fb301ddec5e4)
+1ad8c)
+
 ## Install the OCV virt operator
 
 ![Screenshot 2024-04-04 at 1 12 41 PM](https://github.com/BidGithub2022/Red-Hat-OpenShift-Dedicated-on-Google-Cloud/assets/113651761/37214ea7-d152-4193-8b49-4450fa42e368)
@@ -75,29 +80,11 @@ Use identity provider  and add user to login to the console. I used htpasswd ide
 ## Reason for the error
 The error "2 Insufficient devices.kubevirt.io/kvm" suggests that the Kubernetes/OpenShift cluster lacks the required KVM (Kernel-based Virtual Machine) devices for running virtual machines via KubeVirt. This could mean not enough nodes support virtualization, or KVM is not enabled/available on the nodes. To resolve, ensure virtualization extensions are enabled in the BIOS and that the kubevirt-node-labeller and kubevirt-device-plugin are properly deployed and functioning, making KVM devices available to the nodes.
 
-To enable virtualization on GCP nodes for KVM, ensure your GCP VM instances are of a type that supports nested virtualization, such as n2, n2d, c2, or specific n1 machine types. Then, you can enable nested virtualization by using the --min-cpu-platform flag when creating a VM instance or updating an existing one. This setup is crucial for running KubeVirt or similar technologies that require KVM on GCP nodes. For detailed instructions and requirements, refer to the GCP documentation on enabling nested virtualization.
+To enable virtualization on GCP nodes for KVM, ensure your GCP VM instances are of a type that supports nested virtualization, such as n2, n2d, c2, or specific n1 machine types. Then, you can enable nested virtualization by using the "--min-cpu-platform" flag when creating a VM instance or updating an existing one. This setup is crucial for running KubeVirt or similar technologies that require KVM on GCP nodes. For detailed instructions and requirements, refer to the GCP documentation on enabling nested virtualization.
 
 N1, N2, N2D, and C2 are types of Google Cloud Platform (GCP) virtual machine (VM) instances. N1 instances are the first generation and offer a balance of compute, memory, and network resources. N2 and N2D instances are the newer generations providing improved performance and efficiency, with N2D instances also offering AMD CPUs. C2 instances are optimized for compute-intensive applications, offering the highest performance per core on GCP and are suitable for workloads such as gaming, simulation, and scientific modeling.
 
 To enable --min-cpu-platform on GCP, specify it when creating or updating a VM instance through the gcloud command-line tool, setting it to a desired CPU platform, such as "Intel Skylake". This flag ensures your VM uses a CPU meeting or exceeding your specified minimum. For precise syntax and options, refer to the GCP documentation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Links to refer:
 https://www.youtube.com/watch?v=AI4WwSZJi9g
